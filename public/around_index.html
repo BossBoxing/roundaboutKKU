@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/virtual-tour.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/virtual-tour.css">
+
+  <title>Roundabout KKU</title>
+</head>
+
+<body>
+  <div id="photosphere" style="width: 100%; height: 100vh; "></div>
+
+  <script>
+    var viewer = new PhotoSphereViewer.Viewer({
+      container: 'photosphere',
+      //defaultLong: '100deg',
+      plugins: [
+        [PhotoSphereViewer.MarkersPlugin, {
+          hideButton: false,
+          listButton: false,
+        }],
+        [PhotoSphereViewer.VirtualTourPlugin, {
+          //positionMode: PhotoSphereViewer.VirtualTourPlugin.MODE_GPS,
+          //renderMode: PhotoSphereViewer.VirtualTourPlugin.MODE_3D,
+          linksOnCompass: true,
+          markerStyle: {
+            html: null,
+            image: '/img/mark.jpeg',
+            width: 300,
+            height: 600,
+            scale: [0.5, 2],
+            anchor: 'top center',
+            className: 'psv-virtual-tour__marker',
+            style: {
+              color: 'rgba(0, 208, 255, 0.8)',
+              transform: 'rotate(20deg)',
+            },
+          },
+        }],
+      ]
+    });
+
+    var virtualTour = viewer.getPlugin(PhotoSphereViewer.VirtualTourPlugin);
+
+
+    virtualTour.setNodes([
+      {
+        id: '1',
+        panorama: 'aroundkkuset/วงเวียนคณะวิทย์.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนคณะวิทย์.jpg',
+        name: 'วงเวียนคณะวิทย์',
+        links: [
+          { nodeId: '2', "x": 100, "y": 2000 },
+        ],
+        markers: [
+              {
+          "id": "marker-uaab20553ps",
+          "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+          "longitude": 0.647,
+          "latitude": 0.583,
+          "width": 32,
+          "height": 32
+        }
+        ],
+        //position: [-80.156479, 25.666725, 3],
+        //panoData: { poseHeading: 300 },
+        panoData: { poseHeading: 0 },
+      },
+      {
+        id: '2',
+        panorama: 'aroundkkuset/วงเวียนสะพานขาว.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนสะพานขาว.jpg',
+        name: 'วงเวียนสะพานขาว',
+        links: [
+          //{ nodeId: '3' },
+          { nodeId: '1', "x": 2200, "y": 2000 },
+        ],
+        markers: [
+
+
+        ],
+        //position: [-80.156268, 25.666623, 3],
+        //panoData: { poseHeading: 0 },
+        panoData: { poseHeading: 0 },
+      },/*
+      {
+        id: '3',
+        panorama: 'aroundkkuset/วงเวียนหน้าตึกอธิการบดี.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนหน้าตึกอธิการบดี.jpg',
+        name: 'วงเวียนตึกอธิการบดี',
+        links: [
+          { nodeId: '4' },
+          { nodeId: '2' },
+        ],
+        //position: [-80.155932, 25.666498, 5],
+        //panoData: { poseHeading: 280 },
+      },
+      {
+        id: '4',
+        panorama: 'aroundkkuset/วงเวียนเทคนิคการแพทย์.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนเทคนิคการแพทย์.jpg',
+        name: 'วงเวียนเทคนิคการแพทย์',
+        links: [
+          { nodeId: '3' },
+          { nodeId: '5' },
+        ],
+        //position: [-80.168089, 25.966357, 3],
+        //panoData: { poseHeading: 320 },
+        panoData: { poseHeading: 0 },
+      },
+      {
+        id: '5',
+        panorama: 'aroundkkuset/วงเวียนหน้ามอ.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนหน้ามอ.jpg',
+        name: 'วงเวียนหน้ามอ',
+        links: [
+          { nodeId: '6' },
+          { nodeId: '7' },
+          { nodeId: '4' },
+        ],
+        //position: [-80.196292, 25.956446, 2],
+        //panoData: { poseHeading: 150 },
+        panoData: { poseHeading: 0 },
+      },
+      {
+        id: '6',
+        panorama: 'aroundkkuset/วงเวียนหลังคอมเพล็ก.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนหลังคอมเพล็ก.jpg',
+        name: 'วงเวียนหลัง Complex',
+        links: [
+          { nodeId: '5' },
+          { nodeId: '7' },
+        ],
+        //position: [-80.276465, 25.666496, 2],
+        //panoData: { poseHeading: 50 },
+        panoData: { poseHeading: 0 },
+      },
+      {
+        id: '7',
+        panorama: 'aroundkkuset/วงเวียนสนามบาส.jpg',
+        thumbnail: 'aroundkkuset/วงเวียนสนามบาส.jpg',
+        name: 'วงเวียนสนามกีฬา',
+        links: [
+          { nodeId: '6' },
+          { nodeId: '5' },
+        ],
+        //position: [-79.956465, 25.566496, 2],
+        //panoData: { poseHeading: 40 },
+        panoData: { poseHeading: 0 },
+      },*/
+    ], '1');
+
+  </script>
+</body>
+
+</html>

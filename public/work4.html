@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @keyframes fade-in {
+            from {opacity: 0; top: 200px;}
+            to {opacity: 1; top: 0px;}
+        }
+        @keyframes flip-in {
+            from {width: 0px;}
+            to {width: 75px;}
+            
+        }
+        .card-body div{
+            animation: 2s fade-in;
+            position: relative;
+        }
+        div.pic img {
+            width: 75px;
+            height: 75px;
+            animation: 0.5s flip-in;
+        }
+
+        div.pic {
+            height: 100px;
+        }
+        body{
+            background-color: rgb(0, 0, 0);
+        }
+        .card{
+            background-color: rgb(151, 9, 139);
+        }
+        .card-header{
+            background-color: rgb(49, 16, 238);
+            color: white;
+        }
+        .card-footer{
+            background-color: rgb(49, 16, 238);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+
+        </div>
+    </div>
+
+    <script type="text/babel">
+        class Game extends React.Component {
+            title = "Work4 : เกมจับคู่ภาพด้วย ReactJS";
+            footer = "หัสวรรษ อัคติ 623020040-4 สาขาวิทยาการคอมพิวเตอร์";
+            cards_opened = [];
+            cards_count = 0;
+
+            constructor() {
+                super();
+                this.state = {
+                    page: 0
+                }
+            }
+            render() {
+                var p;
+                if (this.state.page == 0) {
+                    p = <Page0 game={this} />;
+                }
+                if (this.state.page == 1) {
+                    p = <Page1 game={this} cards={this.state.cards} />;
+                }
+                if (this.state.page == 2) {
+                    p = <Page2 game={this} />;
+                }
+
+                return <div className="card">
+                    <div className="card-header">{this.title}</div>
+                    <div className="card-body text-center">{p}
+                    </div>
+                    <div className="card-footer">{this.footer}</div>
+
+
+                </div>;
+
+            }
+
+            start() {
+                this.setState({ page: 1 });
+                var cards = [];
+                this.cards_opened = [];
+                this.cards_count = 36;
+
+                for (var i = 1; i <= 18; i++) {
+                    cards.push(<Card t={i} game={this} />);
+                    cards.push(<Card t={i} game={this} />);
+                }
+                for (var i = 0; i < 100; i++) {
+                    var a = Math.round(Math.random() * 35);
+                    var b = Math.round(Math.random() * 35);
+                    var t = cards[a];
+                    cards[a] = cards[b];
+                    cards[b] = t;
+                }
+                this.setState({ cards: cards });
+            }
+            goback() {
+                this.setState({ page: 0 });
+            }
+            checkCard() {
+                var a = this.cards_opened[0];
+                var b = this.cards_opened[1];
+                this.cards_opened = [];
+                if (a.props.t == b.props.t) {
+                    a.setState({s:2});
+                    b.setState({s:2});
+                    this.cards_count -= 2;
+                } else {
+                    a.setState({s:0});
+                    b.setState({s:0});
+                }
+                if (this.cards_count == 0) {
+                    this.setState({page:2});
+                }
+            }
+        };
+
+        function Page0(props) {
+            return <div>
+                <button className="btn btn-success" onClick={() => props.game.start()}>เริ่มเล่น</button>
+                &nbsp;
+                <a href="/index.html" className="btn btn-danger">กลับหน้าหลัก</a>
+            </div>;
+        }
+
+        function Page1(props) {
+            return <div>
+                <div className="row">
+                    {props.cards}
+                </div>
+                <button className="btn btn-danger" onClick={() => props.game.goback()}>เลิกเล่น</button>
+
+            </div>;
+        }
+
+        function Page2(props) {
+            return <div>
+                <h1>ชนะแล้ว!!!</h1>
+                <button className="btn btn-success" onClick={() => props.game.goback()}>ตกลง</button>
+
+            </div>;
+        }
+
+        class Card extends React.Component {
+            constructor() {
+                super();
+                this.state = { s: 0 };
+            }
+            render() {
+                var m = <div></div>;
+                if (this.state.s == 0) {
+                    m = <img src="work1/hide.png" onClick={() => this.imgClick()} width="80" height="80"></img>;
+                } else if (this.state.s == 1) {
+                    m = <img src={"work1/" + this.props.t + ".png"} width="80" height="80"></img>;
+                }
+                return <div className="col-3">{m}</div>;
+            }
+            imgClick() {
+                var g = this.props.game;
+                if (g.cards_opened.length < 2) {
+                    this.setState({ s: 1 });
+                    g.cards_opened.push(this);
+                    if (g.cards_opened.length == 2) {
+                        setTimeout(() => g.checkCard(), 1000);
+                    }
+                }
+
+            }
+        }
+
+        ReactDOM.render(<Game />, document.getElementById('app'))
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

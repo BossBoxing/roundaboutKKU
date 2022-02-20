@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+่้
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BossBoxing Profile</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/9.6.1/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/9.6.1/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/9.6.1/firebase-performance-compat.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  <style media="screen">
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="card">
+    <img src="img/boss.jpg" alt="John" style="width:100%">
+    <h1>นายหัสวรรษ อัคติ</h1>
+    <p class="title">623020040-4 Sec.1</p>
+    <p>Khonkean University</p>
+    <a href="https://github.com/BossBoxing"><i class="fa fa-dribbble"></i></a>
+    <a href="https://github.com/BossBoxing"><i class="fa fa-twitter"></i></a>
+    <a href="https://github.com/BossBoxing"><i class="fa fa-linkedin"></i></a>
+    <a href="https://www.facebook.com/BigBossRomantic/"><i class="fa fa-facebook"></i></a>
+    <button type="contactBtn" class="btn btn-info"> Contact</button>
+    <p>งานทั้งหมด</p>
+    <button type="work1Btn" class="btn btn-info" onclick="document.location='work1.html'"> Work 1 : Matching Game with JQuery และ Bootstrap</button>
+    <button type="work2Btn" class="btn btn-info" onclick="document.location='work2.html'"> Work 2 : Matching Game with VueJS & VuetifyJS</button>
+    <button type="work3Btn" class="btn btn-info" onclick="document.location='work3.html'"> Work 3 : Matching Game with AngularJS</button>
+    <button type="work4Btn" class="btn btn-info" onclick="document.location='work4.html'"> Work 4 : Matching Game with ReactJS</button>
+    <button type="work5Btn" class="btn btn-info" onclick="document.location='work5.html'"> Work 5 : Panorama มุมมอง 360 องศา ด้วย Photo-Sphere Viewer </button>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.js"></script>
+
+  <title>Panorama 360 in KKU Street</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="center">
+      <h1>Panorama 360 in KKU Street</h1>
+      <h6>นายหัสวรรษ อัคติ 623020040-4 Sec.1</h6>
+      <button type="homeBtn" class="btn btn-info" onclick="document.location='index.html'"> Home </button>
+      <div id="viewer" style="width: 80%; height: 500px;"></div>
+    </div>
+  </div>
+  <script>
+    var viewer = new PhotoSphereViewer.Viewer({
+      container: document.querySelector('#viewer'),
+      panorama: 'work5/output.jpg',
+      panoData: {
+        fullWidth: 8704,  // ขนาดเต็มของพื้นที่แสดงภาพ
+        fullHeight: 4352,
+        croppedWidth: 8704,  // ขนาดกว้างจริงไฟล์ภาพ (pixel)
+        croppedHeight: 4352, // ขนาดสูงจริงไฟล์ภาพ (pixel)
+        croppedX: 0,
+        croppedY: (4500 - 1921) / 2,
+        poseHeading: 0, // 0 to 360
+        posePitch: 0, // -90 to 90
+        poseRoll: 0, // -180 to 180
+      },
+      // ตัวอย่างการใช้ MarkersPlugin
+      plugins: [
+        [PhotoSphereViewer.MarkersPlugin, {
+          markers: [
+            {
+              "id": "marker-1",
+              "image": "assets/blue-pin.png",
+              "longitude": 0.18,
+              "latitude": 0.109,
+              "width": 200,
+              "height": 100,
+              "tooltip": "ตลาดมอดินแดง",
+              "content": $("#google").html()
+            },
+            {
+              "id": "marker-2",
+              "image": "assets/blue-pin.png",
+              "longitude": 3,
+              "latitude": 0.209,
+              "width": 200,
+              "height": 100,
+              "tooltip": "Complex KKU",
+              "content": $("#google").html()
+            },
+            {
+              "id": "marker-3",
+              "image": "assets/blue-pin.png",
+              "longitude": -0.6,
+              "latitude": 0.259,
+              "width": 200,
+              "height": 100,
+              "tooltip": "หอพักหญิงที่ 2",
+              "content": $("#google").html()
+            }
+          ]
+        }]
+      ]
+    });
+  </script>
+</body>
+
+</html>

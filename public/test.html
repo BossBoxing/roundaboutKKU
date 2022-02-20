@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Matching Game</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) and Bootstrap -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #header {
+            color: blue;
+            background-color: skyblue;
+            text-align: center;
+        }
+
+        #view2 .col {
+            padding: 2px;
+        }
+
+        #view2 .col img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="header">งานที่ 1: เกมจับคู่ภาพ โดยใช้ Jquery และ Bootstrap</h1>
+    <div id="view1" class="text-center p-5">
+        <button type="button" id='playBtn' class="btn btn-primary">เริ่มเล่นเกม</button>
+        <a href="index.html"><button type="button" id='home' class="btn btn-primary">กลับหน้าหลัก</button></a>
+    </div>
+    <div id='view2' class='container p-5'>
+        <div class="row">
+            <div class="col"><img src='work1/0.png' id='img1'></div>
+            <div class="col"><img src='work1/0.png' id='img2'></div>
+            <div class="col"><img src='work1/0.png' id='img3'></div>
+            <div class="col"><img src='work1/0.png' id='img4'></div>
+        </div>
+        <div class="row">
+            <div class="col"><img src='work1/0.png' id='img5'></div>
+            <div class="col"><img src='work1/0.png' id='img6'></div>
+            <div class="col"><img src='work1/0.png' id='img7'></div>
+            <div class="col"><img src='work1/0.png' id='img8'></div>
+        </div>
+        <div class="row">
+            <div class="col"><img src='work1/0.png' id='img9'></div>
+            <div class="col"><img src='work1/0.png' id='img10'></div>
+            <div class="col"><img src='work1/0.png' id='img11'></div>
+            <div class="col"><img src='work1/0.png' id='img12'></div>
+        </div>
+        <div class="row">
+            <div class="col"><img src='work1/0.png' id='img13'></div>
+            <div class="col"><img src='work1/0.png' id='img14'></div>
+            <div class="col"><img src='work1/0.png' id='img15'></div>
+            <div class="col"><img src='work1/0.png' id='img16'></div>
+        </div>
+        <div class="text-center p-3">
+            <button type="button" id='stopBtn' class="btn btn-primary">เลิกเล่น</button>
+            <a href="index.html"><button type="button" id='home' class="btn btn-primary">กลับหน้าหลัก</button></a>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $("#view2").hide();
+            $("#playBtn").click(startGame);
+            $("#stopBtn").click(stopGame);
+        });
+        function startGame() {
+            shuffer();
+            $("#view2").show();
+            $("#view1").hide();
+        }
+        function stopGame() {
+            $("#view2").hide();
+            $("#view1").show();
+        }
+        function shuffer() {
+            var list = [];
+            list[0] = 0;
+            for (var i = 1; i <= 16; i++) {
+                list.push(i);
+                list.push(i);
+            }
+            // console.log(list);
+            for (var i = 1; i < 100; i++) {
+                var a = 1 + Math.round(Math.random() * 31);
+                var b = 1 + Math.round(Math.random() * 31);
+                var t = list[a];
+                list[a] = list[b];
+                list[b] = t;
+            }
+            $("#view2 img").attr("src", "work1/0.png")
+                .attr("state", 0);
+            for (var i = 1; i <= 32; i++) {
+                $("#img" + i).attr("srcx", "work1/" + list[i] + ".png");
+            }
+        }
+        $(function () {
+            $("#view2").hide();
+            $("#playBtn").click(startGame);
+            $("#stopBtn").click(stopGame);
+            $("#view2 img").click(imgClick);
+        });
+        function imgClick() {
+            var s = $(this).attr("srcx");
+            $(this).attr("src", s);
+            $(this).attr("state", 1);
+        }
+        // var open_count = 0;
+        // var open_card1 = 0;
+        // var open_card2 = 0;
+        // var all_card = 16;
+
+        // function imgClick() {
+        //     //console.log(this);
+        //     open_count++;
+        //     var s = $(this).attr("srcx");
+        //     if (open_count == 1) open_card1 = s;
+        //     if (open_count == 2) open_card2 = s;
+        //     $(this).attr("src", s);
+        //     $(this).attr("state", 1);
+        //     if (open_count == 2) {
+        //         if (open_card1 == open_card2) {
+        //             all_card -= 2;
+        //             $("[state=1]").hide().attr("state", 2);
+        //         } else {
+        //             $("[state=1]").attr("state", 0).attr("src", "work1/0.png");
+        //         }
+        //         open_count = 0;
+        //         open_card2 = "";
+        //         open_card1 = "";
+        //     }
+        // }
+        var open_count = 0;
+        var open_card1 = 0;
+        var open_card2 = 0;
+        var all_card = 32;
+
+        function imgClick() {
+            //console.log(this);
+            if ($(this).attr("state") != 0) return;
+            if (open_count >= 2) return;
+
+            open_count++;
+            var s = $(this).attr("srcx");
+            if (open_count == 1) open_card1 = s;
+            if (open_count == 2) open_card2 = s;
+            $(this).hide().attr("src", s).slideDown(500);
+            $(this).attr("state", 1);
+            if (open_count == 2) {
+                setTimeout(() => {
+                    if (open_card1 == open_card2) {
+                        all_card -= 2;
+                        $("[state=1]").fadeOut(1000).attr("state", 2);
+                    } else {
+                        $("[state=1]").attr("state", 0).attr("src", "work1/0.png");
+                    }
+                    open_count = 0;
+                    open_card2 = "";
+                    open_card1 = "";
+
+                }, 2000)
+            }
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
