@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Sarabun"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+            />
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+            
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/uevent@2/browser.js"></script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.css">
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.css">
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/virtual-tour.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/virtual-tour.css">
+        <title>Work 5</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                background-color: #feee;
+                font-family: "Sarabun", sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="photosphere" style="width: 100%; height: 100vh;"></div>
+        <script>
+            var viewer = new PhotoSphereViewer.Viewer({
+            container: 'photosphere',
+            loadingImg: 'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700',
+            plugins    : [
+                [PhotoSphereViewer.MarkersPlugin, {
+                    hideButton: false,
+                    listButton: false,
+                }],
+                [PhotoSphereViewer.VirtualTourPlugin, {
+                    //positionMode: PhotoSphereViewer.VirtualTourPlugin.MODE_GPS,
+                    //renderMode  : PhotoSphereViewer.VirtualTourPlugin.MODE_3D,
+                    linksOnCompass: true,
+                    markerStyle: {
+                        html : null,
+                        image: './images/mark/mark.jpeg',
+                        width    : 300,
+                        height   : 600,
+                        scale    : [0.5, 2],
+                        anchor   : 'top center',
+                        className: 'psv-virtual-tour__marker',
+                        style : {
+                            color: 'rgba(0, 208, 255, 0.8)',
+                            transform: 'rotate(20deg)',
+                        },
+                    },
+                }],
+            ],
+        });
+        
+        var virtualTour = viewer.getPlugin(PhotoSphereViewer.VirtualTourPlugin);
+
+        virtualTour.setNodes([
+            {
+                id      : '1',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-1-thumb.jpg',
+                name    : 'วงเวียนคณะวิทย์',
+                links   : [
+                    { nodeId: '2',"x": 2, "y": 1989},
+                    //{ nodeId: '3' ,"x": 0, "y": 1953},
+                ],
+                markers: [
+                {
+                    "id": "marker-kiai5oajrjf",
+    "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+    "longitude": 0.231,
+    "latitude": 0.346,
+    "width": 32,
+    "height": 32
+  }
+                ],
+               // position: [180, 25, 3],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '2',
+                panorama: './aroundkkuset/วงเวียนสะพานขาว.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-2-thumb.jpg',
+                name    : 'วงเวียนสะพานขาว',
+                links   : [
+                    //{ nodeId: '3' ,"x": 816, "y": 1837},
+                    { nodeId: '1' ,"x": 1968, "y": 2068},
+                ],
+                markers: [
+                    
+                ],
+                //position: [150.156168, 25.666623, 3],
+                panoData: { poseHeading: 0 },
+            },/*
+            {
+                id      : '3',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'ลานหน้าหอศิล',
+                links   : [
+                    { nodeId: '1' ,"x": 5933, "y": 2033},
+                    { nodeId: '2' ,"x": 6780, "y": 2019},
+                    { nodeId: '4' ,"x": 541, "y": 1978},
+                    { nodeId: '5' ,"x": 1937, "y": 2033},
+                    { nodeId: '7' ,"x": 8159, "y": 2025},
+                ],
+                markers: [
+                    {
+                        "id": "marker-3",
+                        "html": document.getElementById('dark3').innerHTML,
+                        "longitude": 0.234,
+                        "latitude": -0.357,
+                        "width": 32,
+                        "height": 32,
+                        
+                    },
+                    {
+                        "id": "marker-jyfckh7h1s",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (8.868-2.614),
+                        "latitude": 0.271,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "หอศิลปวัฒนธรรม",
+                        "content": "<h2>หอศิลปวัฒนธรรม</h2><br>หอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น ก่อตั้งขึ้นในปี พ.ศ. 2539 รัฐบาลในสมัย ฯพณฯ ชวน หลีกภัย เป็นนายกรัฐมนตรีในขณะนั้นได้อนุมัติงบประมาณแผ่นดิน มาดำเนินการก่อสร้างหอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น บริเวณบึงสีฐานฝั่งตะวันตก อาคารเป็นทรงเล้าข้าวของชาวอีสาน จัดแสดงนิทรรศการและทำกิจกรรมด้านศิลปวัฒนธรรมและงานอื่นๆที่เกี่ยวข้องส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี ภายในหอศิลป์ ประกอบไปด้วย 2 ส่วนหลักๆส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี ส่วนที่ 2 นิทรรศการถาวร ห้อง “อีสานนิทัศน์” เปิดให้เข้าชม จันทร์-ศุกร์ เวลา 09.00-16.30 น. “อีสานนิทัศน์” เป็นห้องนิทรรศการถาวรชั้น 2 ในรูปแบบ “พิพิธภัณฑ์การศึกษา (Educational Museum)” ที่แสดงเรื่องราวเกี่ยวกับภูมิภาคอีสาน โดยใช้วิธีการนำเสนอด้วยเทคโนโลยีและสื่อที่ทันสมัย",
+                    },
+                    {
+                        "id": "marker-7gpuy8yzar",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (4.414-2.614),
+                        "latitude": 0.053,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "อาคารพุทธศิลป์",
+                        "content": "<h2>อาคารพุทธศิลป์</h2><br>อาคารพุทธศิลป์ พื้นที่อาคารชุดสำหรับจัดกิจกรรมหลากหลายรูปแบบ เป็นศูนย์ในการทำกิจกรรมต่างๆ ทั้งในส่วนของสถานที่และภาพลักษณ์ในการทำกิจกรรมในอนาคต รวมทั้งเป็นบริเวณของศูนย์กลางด้านวัฒนธรรม เป็นบริเวณที่จัดการเรียนรู้ที่หลากหลาย",
+                    },
+                    {
+                        "id": "marker-y3biffqigg",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (4.805-2.614),
+                        "latitude": 0.099,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ต้นลีลาวดี พันธุ์พวงขาว",
+                        "content": "<h2>ต้นลีลาวดี พันธุ์พวงขาว</h2><br>ลีลาวดีโบราณพันธุ์ดั้งเดิมที่มีในประเทศไทยแรก ๆ จะเห็นตามวังเก่า ๆ หรือวัดทั่ว ๆ ไป เป็นไม้พุ่มขนาดกลาง มีดอกดก ออกดอกตลอดทั้งปี ช่อดอกใหญ่มี 10-15 ดอก มีกลิ่นหอมเย็น ๆ ",
+                    },
+                    {
+                        "id": "marker-gx4jg0cqdp5",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (4.61-2.614),
+                        "latitude": 0.078,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ต้นลีลาวดี พันธุ์ชมพูลูกไม้",
+                        "content": "<h2>ต้นลีลาวดี พันธุ์ชมพูลูกไม้</h2><br>ลีลาวดี หรือ ลั่นทม เป็นไม้ยืนต้นผลัดใบขนาดเล็ก ลำต้นแตกกิ่งก้านสาขาและพุ่มใบสวยงาม เปลือกต้นเรียบ ทุกส่วนมียางสีขาว ดอกออกเป็นช่อที่ปลายกิ่ง หรือออกเป็นช่อระหว่างใบ หรือใต้ใบ ดอกมีหลายสี มีกลิ่นหอมแรงตลอดทั้งวัน บางพันธุ์สามารถออกดอกได้ตลอดทั้งปี สามารถปลูกได้ทั้งในแปลงจัดสวน และในกระถาง นิยมใช้ในการจัดสวนเพื่อตกแต่งภูมิทัศน์เป็นอย่างมาก",
+                    },
+                    {
+                        "id": "marker-03oye3d8o526",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (6.096-2.614),
+                        "latitude": 0.238,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ลานกิจกรรมและอัฒจันทร์",
+                        "content": "<h2>ลานกิจกรรมและอัฒจันทร์</h2><br>พื้นที่สำหรับจัดกิจกรรมหลากหลายรูปแบบ เป็นศูนย์กลางในการทำกิจกรรมต่างๆ ทั้งในส่วนของสถานที่และภาพลักษณ์ในการทำกิจกรรมในอนาคต มีการเปิดให้บุคคลทั่วไปสามารถเข้าใช้สถานที่ได้",
+                    },
+                    {
+                        "id": "marker-7scm0u4pymd",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (6.655-2.614),
+                        "latitude": 0.133,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ดอกจาน",
+                        "content": "<h2>ดอกจาน</h2><br>มีดอกไม้ประจำถิ่นภาษาอีสานเรียกว่าดอกจาน ที่มีชื่อเรียกขานใหม่...ทองกวาว มีชื่อเรียกอย่างอื่นอีกว่า กวาว, ก้าว (ภาคเหนือ) จอมทอง (ใต้) จ้า (เขมร-สุรินทร์) จาน (อุบลราชธานี) ทองธรรมชาติ, ทองพรมชาติ (ภาคกลาง) และทองต้น (ราชบุรี) พบขึ้นตามป่าผลัดใบ ป่าหญ้า ป่าละเมาะที่แห้งแล้ง พบมากทางภาคอีสานตอนเหนือ ภาคอื่นมีกระจัดกระจายเป็นไม้ยืนต้น ผลัดใบ สูง 8-15 เมตร ใบประกอบมีใบย่อย 3 ใบ รูปไข่ค่อนข้างกว้าง โคนเบี้ยว เวลามีดอกใบจะร่วงหมดเหลือเพียงดอกน่าชมยิ่ง ดอกออกเป็นช่อตามกิ่งก้านและปลายยอด กลีบเลี้ยงเชื่อมกันเป็นรูปบาตรเล็กๆ มีขน กลีบดอกมี 5 กลีบ ลักษณะคล้ายดอกถั่ว สีเหลืองถึงสีแดงแสด มีเกสร 10 อัน คล้ายรูปเคียว",
+                    },
+                    {
+                        "id": "marker-5nbewywioat",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (7.906-2.614),
+                        "latitude": -0.007,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "บึงสีฐานฝั่งตะวันออก",
+                        "content": "<h2>บึงสีฐานฝั่งตะวันออก</h2><br>บึงสีฐาน แหล่งน้ำใหญ่ในมหาวิทยาลัยขอนแก่น โดยมีสองฝั่ง และถูกเรียกเป็น 1.บึงสีฐานฝั่งตะวันออก (ฝั่งทางหอประชุมกาญจนาพิเษก) และ 2. บึงสีฐานฝั่งตะวันตก (ฝั่งทางหอศิลปวัฒนธรรม)และบึงสuฐานฝั่งนี้ถูกใช้เป็นที่จัดกิจกรรมต่างๆมากมาย อาทิเช่น ช่วงวันลอยกระทง จะมีการนำไฟมาประดับ หรือมีการจัดกิจกรรม สีฐานเฟสติวัล ซึ่งจะมีผู้คนมากมายมาเข้าร่วมกิจกรรม",
+                    },
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '4',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'ลานกิจกรรมหอศิลป์',
+                links   : [
+                    { nodeId: '5' ,"x": 5552, "y": 2013},
+                    { nodeId: '7' ,"x": 8004, "y": 2019},
+                ],
+                markers: [
+                    {
+                        "id": "marker-4",
+                        "html": document.getElementById('dark5').innerHTML,
+                        "longitude": 3.038,
+                        "latitude": -0.306,
+                        "width": 32,
+                        "height": 32,
+                        
+                    },
+                    {
+                        "id": "marker-ngozacazuat",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (0.554+0.049),
+                        "latitude": -0.046,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ลานแสดง",
+                        "content": "<h2>ลานแสดง</h2><br>พื้นที่สำหรับจัดกิจกรรมหลากหลายรูปแบบ เป็นศูนย์ในการทำกิจกรรมต่างๆ ทั้งในส่วนของสถานที่และภาพลักษณ์ในการทำกิจกรรมในอนาคต รวทั้งเป็นบริเวณของศูนย์กลางด้านวัฒนธรรม เป็นบริเวณที่จัดการเรียนรู้ที่หลากหลายอ้างอิง : ข้อมูลจาก เว็บไซต์ศูนย์ศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น"
+                    },
+                    {
+                        "id": "marker-pejbw0ab44m",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (0.554+0.98),
+                        "latitude": 0.22,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "บึงสีฐานฝั่งตะวันออก",
+                        "content": "<h2>บึงสีฐานฝั่งตะวันออก</h2><br>บึงสีฐาน แหล่งน้ำใหญ่ในมหาวิทยาลัยขอนแก่น โดยมีสองฝั่ง และถูกเรียกเป็น 1.บึงสีฐานฝั่งตะวันออก (ฝั่งทางหอประชุมกาญจนาพิเษก) และ 2. บึงสีฐานฝั่งตะวันตก (ฝั่งทางหอศิลปวัฒนธรรม) และบึงสีฐานฝั่งนี้ถูกใช้เป็นที่จัดกิจกรรมต่างๆมากมาย อาทิเช่น ช่วงวันลอยกระทง จะมีการนำไฟมาประดับ หรือมีการจัดกิจกรรม สีฐานเฟสติวัล ซึ่งจะมีผู้คนมากมายมาเข้าร่วมกิจกรรม"
+                    },
+                    {
+                        "id": "marker-vak6hh6p3qd",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (0.554+2.45),
+                        "latitude": -0.009,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "หอศิลปวัฒนธรรม",
+                        "content": "<h2>หอศิลปวัฒนธรรม</h2><br>หอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น ก่อตั้งขึ้นในปี พ.ศ. 2539 รัฐบาลในสมัย ฯพณฯ ชวน หลีกภัย เป็นนายกรัฐมนตรีในขณะนั้นได้อนุมัติงบประมาณแผ่นดิน มาดำเนินการก่อสร้างหอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น บริเวณบึงสีฐานฝั่งตะวันตก อาคารเป็นทรงเล้าข้าวของชาวอีสาน จัดแสดงนิทรรศการและทำกิจกรรมด้านศิลปวัฒนธรรมและงานอื่นๆที่เกี่ยวข้อง<br>ภายในหอศิลป์ ประกอบไปด้วย 2 ส่วนหลักๆ<br>ส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี <br>ส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี <br>ส่วนที่ 2 นิทรรศการถาวร ห้อง “อีสานนิทัศน์” เปิดให้เข้าชม จันทร์-ศุกร์ เวลา 09.00-16.30 น. <br>อีสานนิทัศน์ เป็นห้องนิทรรศการถาวรชั้น 2 ในรูปแบบ พิพิธภัณฑ์การศึกษา (Educational Museum) ที่แสดงเรื่องราวเกี่ยวกับภูมิภาคอีสาน โดยใช้วิธีการนำเสนอด้วยเทคโนโลยีและสื่อที่ทันสมัย"
+                    },
+                    {
+                        "id": "marker-8n8ejrjer2r",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (0.554+5.5654),
+                        "latitude": -0.038,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ลานจอดรถฝั่งอัฒจันทร์",
+                        "content": "<h2>ลานจอดรถฝั่งอัฒจันทร์</h2><br>ลานจอดรถฝั่งอัฒจันทร์ ซึ่งเป็นพื้นสาธารณะขนาดใหญ่ที่สามารถให้ผู้ที่เข้ามาใช้บริการหอศิลปวัฒนธรรม หอประชุมกาญจนาภิเษก หรือบึงสีฐานฝั่งต่างๆ นำรถมาจอดได้โดยไม่มีการเก็บค่าบริการ "
+                    },
+                    {
+                        "id": "marker-dp4l5bph3wh",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (0.554+4.774),
+                        "latitude": -0.05,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ต้นลีลาวดี พันธุ์ขาวพวง ",
+                        "content": "<h2>ต้นลีลาวดี พันธุ์ขาวพวง</h2><br>ลีลาวดีโบราณพันธุ์ดั้งเดิมที่มีในประเทศไทยแรก ๆ จะเห็นตามวังเก่า ๆ หรือวัดทั่ว ๆ ไป เป็นไม้พุ่มขนาดกลาง มีดอกดก ออกดอกตลอดทั้งปี ช่อดอกใหญ่มี 10-15 ดอก มีกลิ่นหอมเย็น ๆ "
+                    },
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '5',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'ลานศรีฐาน',
+                links   : [
+                    { nodeId: '4' ,"x": 7817, "y": 2033},
+                    { nodeId: '6' ,"x": 2453, "y": 2033},
+                    { nodeId: '3' ,"x": 6750, "y": 2033},
+                ],
+                markers: [
+                    {
+                        "id": "marker-5",
+                        "html": document.getElementById('dark6').innerHTML,
+                        "longitude": 3.541,
+                        "latitude": -0.06,
+                        "width": 32,
+                        "height": 32,
+                        
+                    },
+                    {
+                        "id": "marker-oh1pkpdpk1",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": 5.263,
+                        "latitude": 0.192,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "หอประชุมกาญจนาภิเษก",
+                        "content": "<h2>หอประชุมกาญจนาภิเษก</h2><br>ตั้งอยู่บนเนื้อที่ประมาณ 60 ไร่ ภายใน บริเวณมหาวิทยาลัยขอนแก่นห่างจากบึงสีฐานไปทางทิศตะวันออก อาคารเป็นหอประชุมใหญ่ รูปทรงกูบเกวียนอีสาน (กูบหมายถึง ประทุนหลังช้าง) ลักษณะเป็นอาคาร 2 ชั้น มีพื้นที่ใช้สอย รวมทั้งสิ้น 21,160 ตารางเมตร<br>เป็นสถานที่ที่นักศึกษาจะได้เข้าไปอย่างเป็นทางการเพียง 2 รอบ คือปฐมนิเทศนักศึกษาใหม่ และเข้าพิธีรับปริญญา",
+                    },
+                    {
+                        "id": "marker-1b8bdkkdwr7",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": 0.116,
+                        "latitude": 0.094,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "โรงพยาบาลกรุงเทพขอนแก่น",
+                        "content": "<h2>โรงพยาบาลกรุงเทพขอนแก่น</h2><br> ทำเลที่ตั้งของโรงพยาบาลกรุงเทพขอนแก่น อยู่ในทำเลที่เข้าถึงง่าย ตั้งอยู่บนถนนมะลิวัลย์ ซึ่งเป็นเส้นทางสัญจรหลัก การจราจรคับคั่ง มีโอกาสเกิดอุบัติเหตุการจราจรทุกประเภท มีโรคสำคัญในกลุ่มโรคฉุกเฉินเร่งด่วน เช่น Head injury, Multiple Trauma, ด้านสภาพเศรษฐกิจ สังคม การเมือง จากพฤติกรรมการบริโภค การออกกำลังกายของประชาชน การทำงานในบริษัท โรงงาน การใช้อุปกรณ์และเทคโนโลยี ประกอบกับการทำงานเป็นระยะเวลานาน มีโอกาสเกิดโรคในกลุ่มเสี่ยงสูง เช่น โรคหัวใจและหลอดเลือด โรคเบาหวาน โรคของระบบกระดูกและข้อ กล้ามเนื้อ โรคจากการทำงานต่างๆ รวมทั้งการตั้งครรภ์เสี่ยงสูง จากมารดาที่มีอายุ 35 ปี, จากพื้นที่จังหวัดขอนแก่นที่มีแนวโน้มประชากรสูงวัยเพิ่มขึ้น มีโอกาสเกิดโรคหัวใจและหลอดเลือด โรคเบาหวานโรคความดันโลหิตสุง โรคกระดูกและข้อ กล้ามเนื้อ โรคตา โรคไต, กลุ่มโรคติดต่อที่สำคัญ ได้แก่ โรคระบบทางเดินหายใจ โรคไข้หวัดใหญ่ RSV โรคมือ เท้า ปาก เป็นต้น<br>การเป็นศูนย์กลางการรับส่งต่อผู้ป่วยในภาคอีสาน เนื่องจากอยู่ในพื้นที่ที่เข้าถึงง่าย เครื่องมือทันสมัย มีแพทย์และบุคคลากรที่พร้อมด้วยความรู้ความชำนาญเฉพาะด้าน<br>Business Growth จากการเพิ่ม เคสผู้ป่วยหนัก เคสผ่าตัด การดูแลรักษาและรับส่งต่อผู้ป่วยที่มีความซับซ้อนในการรักษาจากโรงพยาบาลใกล้เคียง หรือ โรงพยาบาลเอกชนต่างจังหวัด เพิ่ม CMI ในการดูแลผู้ป่วย",
+                    },
+                    {
+                        "id": "marker-dgyiwf4pzxp",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": 0.359,
+                        "latitude": -0.007,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "บึงสีฐานฝั่งตะวันออก",
+                        "content": "<h2>บึงสีฐานฝั่งตะวันออก</h2><br>บึงสีฐาน แหล่งน้ำใหญ่ในมหาวิทยาลัยขอนแก่น โดยมีสองฝั่ง และถูกเรียกเป็น <br>1.บึงสีฐานฝั่งตะวันออก (ฝั่งทางหอประชุมกาญจนาพิเษก)<br>และ 2. บึงสีฐานฝั่งตะวันตก (ฝั่งทางหอศิลปวัฒนธรรม)<br>และบึงสีฐานฝั่งนี้ถูกใช้เป็นที่จัดกิจกรรมต่างๆมากมาย อาทิเช่น ช่วงวันลอยกระทง จะมีการนำไฟมาประดับ หรือมีการจัดกิจกรรม สีฐานเฟสติวัล ซึ่งจะมีผู้คนมากมายมาเข้าร่วมกิจกรรม",
+                    },
+                    {
+                        "id": "marker-u970met1ojo",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": 1.944,
+                        "latitude": 0.179,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "หอศิลปวัฒนธรรม",
+                        "content": "<h2>หอศิลปวัฒนธรรม</h2><br>หอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น ก่อตั้งขึ้นในปี พ.ศ. 2539 รัฐบาลในสมัย ฯพณฯ ชวน หลีกภัย เป็นนายกรัฐมนตรีในขณะนั้นได้อนุมัติงบประมาณแผ่นดิน มาดำเนินการก่อสร้างหอศิลปวัฒนธรรม มหาวิทยาลัยขอนแก่น บริเวณบึงสีฐานฝั่งตะวันตก อาคารเป็นทรงเล้าข้าวของชาวอีสาน จัดแสดงนิทรรศการและทำกิจกรรมด้านศิลปวัฒนธรรมและงานอื่นๆที่เกี่ยวข้อง<br>ภายในหอศิลป์ ประกอบไปด้วย 2 ส่วนหลักๆ<br>ส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี <br>ส่วนที่ 1 อาคารแสดงนิทรรศการศิลปะ คือ บริเวณ ชั้นที่ 1 และชั้นที่ 3 เป็นพื้นที่จัดนิทรรศการศิลปะหมุนเวียน ทั้งผลงานของศิลปินไทย ต่างประเทศ นักศึกษาภายใน ภายนอกมหาวิทยาลัย หน่วยงานของรัฐ และเอกชน มีนิทรรศการจัดตลอดทั้งปี <br>ส่วนที่ 2 นิทรรศการถาวร ห้อง “อีสานนิทัศน์” เปิดให้เข้าชม จันทร์-ศุกร์ เวลา 09.00-16.30 น. <br>อีสานนิทัศน์ เป็นห้องนิทรรศการถาวรชั้น 2 ในรูปแบบ พิพิธภัณฑ์การศึกษา (Educational Museum) ที่แสดงเรื่องราวเกี่ยวกับภูมิภาคอีสาน โดยใช้วิธีการนำเสนอด้วยเทคโนโลยีและสื่อที่ทันสมัย"
+                    },
+                    {
+                        "id": "marker-ywzodcpfdlr",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": 2.934,
+                        "latitude": 0.152,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ลานจอดรถฝั่งอัฒจันทร์",
+                        "content": "<h2>ลานจอดรถฝั่งอัฒจันทร์</h2><br>ลานจอดรถฝั่งอัฒจันทร์ ซึ่งเป็นพื้นสาธารณะขนาดใหญ่ที่สามารถให้ผู้ที่เข้ามาใช้บริการหอศิลปวัฒนธรรม หอประชุมกาญจนาภิเษก หรือบึงสีฐานฝั่งต่างๆ นำรถมาจอดได้โดยไม่มีการเก็บค่าบริการ "
+                    },
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '6',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'หอกาฬด้านล่าง',
+                links   : [
+                    { nodeId: '8' ,"x": 4135, "y": 2033},
+                    { nodeId: '5' ,"x": 6301, "y": 2033},
+                    { nodeId: '4' ,"x": 7052, "y": 2033},
+
+                ],
+                markers: [
+                    {
+                        "id": "marker-6",
+                        "html": document.getElementById('dark7').innerHTML,
+                        "longitude": 0.058,
+                        "latitude": -0.344,
+                        "width": 32,
+                        "height": 32,
+                        
+                    },
+                    {
+                        "id": "marker-ixchndudda",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (17.5266-17.4516),
+                        "latitude": 0.117,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "หอประชุมกาญจนาภิเษก",
+                        "content": "<h2>หอประชุมกาญจนาภิเษก</h2><br>ตั้งอยู่บนเนื้อที่ประมาณ 60 ไร่ ภายใน บริเวณมหาวิทยาลัยขอนแก่นห่างจากบึงสีฐานไปทางทิศตะวันออก อาคารเป็นหอประชุมใหญ่ รูปทรงกูบเกวียนอีสาน (กูบหมายถึง ประทุนหลังช้าง) ลักษณะเป็นอาคาร 2 ชั้น มีพื้นที่ใช้สอย รวมทั้งสิ้น 21,160 ตารางเมตร<br>เป็นสถานที่ที่นักศึกษาจะได้เข้าไปอย่างเป็นทางการเพียง 2 รอบ คือปฐมนิเทศนักศึกษาใหม่ และเข้าพิธีรับปริญญา",
+                    },
+                    {
+                        "id": "marker-7vvi26hpmsc",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (17.5266-17.4516),
+                        "latitude": -0.145,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip":"ทางเข้าสู่หอกาญ", 
+                        "content": "<h2>ทางเข้าสู่หอกาญ</h2><br>สถานที่ที่เป็นทางที่เข้าสู่หอกาญ ซึ่งในตอนปฐมนิเทศนักศึกษาใหม่ จะมีรุ่นพี่มายืนถือธงคณะแต่ละคณะมายืนรอต้อนรับน้องใหม่ พร้อมมีขอนไม้ใหญ่อยู่ตรงกลางทางให้รุ่นน้องรอดไป ที่ขอนไม้ได้เขียนว่า <b>&Prime; KHON KAEN UNIVERSITY &Prime;</b> มีความเชื่อว่า ถ้าเราแตะตัว A ที่ขอนไม้ เราจะได้เกรด  A หรือถ้าเราแตะตัว EN ที่ขอนไม้ เราจะได้แฟนเรียนวิศวะ ซึ่งเป็นความเชื่อที่ถูกเล่าต่อกันมารุ่นสู่รุ่น จะเป็นจริงหรือไม่นั้น ต้องอยู่ที่ตัวเราแล้ว"
+                    },
+                    {
+                        "id": "marker-zxorrt4psh",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (19.7356-17.4516),
+                        "latitude": 0.006,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ตู้ ATM SCB หน้าหอกาญ",
+                        "content": "<h2>ตู้ ATM SCB หน้าหอกาญ</h2><br>เป็นตู้ ATM ยอดฮิตที่ต้องต่อคิวรอในวันที่มีตลาดเปิดท้าย หรือการจัดแสดงสินค้าต่างๆในหอกาญจนาภิเษก หรือแม้แต่ในช่วงรับปริญญา ตู้ ATM SCB นี้ก็มีตำนานเช่นกัน เพราะว่าตามทางกฏระเบียบแล้ว ห้ามนำเครื่องมือสื่อสารเข้าไปในสถานที่รับปริญญา จึงทำให้บัณฑิตส่วนมากได้นัดหมายญาติของตนไว้ว่า  &Prime; เจอกันที่ตู้ ATM &Prime; แต่ด้วยความที่คนเยอะมากในวันนั้น ทำให้บัณฑิตและญาติที่นัดเจอกันต้องอุทานออกมาว่า <b>&Prime; อยู่ไสล่ะบัดหนิ &Prime;<b>"
+                    },
+                    {
+                        "id": "marker-7m41bp3teu9",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (20.1976-17.4516),
+                        "latitude": -0.002,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "ป้ายรอรถประจำทางหน้าหอกาญ" ,
+                        "content": "<h2>ป้ายรอรถประจำทางหน้าหอกาญ</h2><br>ป้ายรอรถ smart bus ที่มักจะมีผู้คนมารอขึ้นรถเพื่อเดินทางเข้าไปภายในมหาวิทยาลัย",
+                    },
+                    {
+                        "id": "marker-aki2mi3bqsu",
+                        "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+                        "longitude": (20.9836-17.4516),
+                        "latitude": 0.016,
+                        "width": 32,
+                        "height": 32,
+                        "tooltip": "รถ Smart-Bus ",
+                        "content": "<h2>รถ Smart-Bus</h2><br>เป็นรถประจำทางที่ช่วยอำนวยความสะดวกของผู้คนที่ต้องการเดินทางภายในมหาวิทยาลัยขอนแก่น โดยรถจะมีเส้นทางการเดินทาง 5 สายโดยแบ่งเป็นสีได้แก่ แดง น้ำเงิน เขียว เหลือง ส้ม ซึ่งสามารถดูเส้นทางและตำแหน่งปัจจบันของรถแต่ละคันได้ผ่านแอพพลิเคชัน KKU Smart Transit : KST",
+                    },
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '7',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'ลานหญ้าพิคเนตร',
+                links   : [
+                    { nodeId: '4' ,"x": 5933, "y": 2033},
+                    { nodeId: '3' ,"x": 2243, "y": 2052},
+                    { nodeId: '5' ,"x": 428, "y": 2052},
+                ],
+                markers: [
+                    {
+                        "id": "marker-7",
+                        "html": document.getElementById('dark4').innerHTML,
+                        "longitude": 0.234,
+                        "latitude": -0.357,
+                        "width": 32,
+                        "height": 32,
+                        
+                    }
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '8',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'หอกาฬบินตรง',
+                links   : [
+                    { nodeId: '9' ,"x": 4863, "y": 2033},
+                    { nodeId: '5' ,"x": 6070, "y": 2033},
+                    { nodeId: '4' ,"x": 7219, "y": 2033},
+                    { nodeId: '6' ,"x": 4100, "y": 2033},
+                ],
+                markers: [
+                    {
+                        "id": "marker-8",
+                        "html": document.getElementById('dark8').innerHTML,
+                        "longitude": 0.038,
+                        "latitude": -0.468,
+                        "width": 32,
+                        "height": 32,
+                        
+                    }
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },
+            {
+                id      : '9',
+                panorama: './aroundkkuset/วงเวียนคณะวิทย์.jpg',
+                thumbnail: 'https://photo-sphere-viewer-data.netlify.app/assets/tour/key-biscayne-3-thumb.jpg',
+                name    : 'หอกาฬบินข้าง',
+                links   : [
+                    { nodeId: '8' ,"x": 3445, "y": 2033},
+                    { nodeId: '5' ,"x": 7768, "y": 2033},
+                ],
+                markers: [
+                    {
+                        "id": "marker-9",
+                        "html": document.getElementById('dark9').innerHTML,
+                        "longitude": 0.393,
+                        "latitude": -0.503,
+                        "width": 32,
+                        "height": 32,
+                        
+                    }
+                ],
+                //position: [-80.155932, 25.666498, 5],
+                panoData: { poseHeading: 0 },
+            },*/
+        ], '1');
+        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    </body>
+</html>

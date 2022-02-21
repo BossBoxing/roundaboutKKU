@@ -10,13 +10,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/uevent@2/browser.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.css">
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/markers.css">
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/plugins/virtual-tour.js"></script>
   <link rel="stylesheet" type="text/css"
@@ -27,39 +30,24 @@
 
 <body>
   <div id="photosphere" style="width: 100%; height: 100vh; "></div>
-
   <script>
     var viewer = new PhotoSphereViewer.Viewer({
       container: 'photosphere',
-      //defaultLong: '100deg',
+      defaultLong: '100deg',
       plugins: [
         [PhotoSphereViewer.MarkersPlugin, {
           hideButton: false,
-          listButton: false,
+          //listButton: false,
         }],
         [PhotoSphereViewer.VirtualTourPlugin, {
-          //positionMode: PhotoSphereViewer.VirtualTourPlugin.MODE_GPS,
-          //renderMode: PhotoSphereViewer.VirtualTourPlugin.MODE_3D,
-          linksOnCompass: true,
-          markerStyle: {
-            html: null,
-            image: '/img/mark.jpeg',
-            width: 300,
-            height: 600,
-            scale: [0.5, 2],
-            anchor: 'top center',
-            className: 'psv-virtual-tour__marker',
-            style: {
-              color: 'rgba(0, 208, 255, 0.8)',
-              transform: 'rotate(20deg)',
-            },
-          },
+          positionMode: PhotoSphereViewer.VirtualTourPlugin.MODE_GPS,
+          renderMode: PhotoSphereViewer.VirtualTourPlugin.MODE_3D,
+
         }],
       ]
     });
 
     var virtualTour = viewer.getPlugin(PhotoSphereViewer.VirtualTourPlugin);
-
 
     virtualTour.setNodes([
       {
@@ -68,21 +56,67 @@
         thumbnail: 'aroundkkuset/วงเวียนคณะวิทย์.jpg',
         name: 'วงเวียนคณะวิทย์',
         links: [
-          { nodeId: '2', "x": 100, "y": 2000 },
+          { nodeId: '2' },
         ],
         markers: [
-              {
-          "id": "marker-uaab20553ps",
-          "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
-          "longitude": 0.647,
-          "latitude": 0.583,
-          "width": 32,
-          "height": 32
-        }
+          {
+            "id": "marker-1",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '302deg',
+            "latitude": '15deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "อนุสาวรีย์พระบรมราชานุเสาวรีย์พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว",
+            "content": "<h2>อนุสาวรีย์พระบรมราชานุเสาวรีย์พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว</h2><img src='./aroundkkuset/desc/อนุเสาวรีย์.jpg' width='400' /><br>เป็นรูปปั้นและออกแบบฐาน แล้วดำเนินการปั้นด้วยดินเหนียวตามขั้นตอน มีขนาดสองเท่าของพระองค์จริงตามสัดส่วน ",
+
+          },
+          {
+            "id": "marker-2",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '170deg',
+            "latitude": '0deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "คณะเทคโนโลยี มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>คณะเทคโนโลยี มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/เทคโน.jpg' width='400' /><br> เป็นส่วนราชการไทยระดับคณะวิชา สังกัดมหาวิทยาลัยขอนแก่น กระทรวงศึกษาธิการ เป็นคณะวิชาที่จัดตั้งขึ้นเป็นอันดับที่ 12 ของมหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-3",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '280deg',
+            "latitude": '12deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ศูนย์ สอวน คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ศูนย์ สอวน คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</h2><br> เป็นตึกเรียนของคณะวิทยาศาสตร์ ตึงที่ 6 และเป็นศูนย์ มูลนิธิส่งเสริมโอลิมปิกวิชาการและพัฒนามาตรฐานวิทยาศาสตร์ศึกษาฯ ของคณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-4",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '270deg',
+            "latitude": '18deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ตึก 8 คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ตึก 8 คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/ตึก8.jpg' width='400' /><br> เป็นอาคารเรียนรวมและปฏิบัติการ SC08 คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-5",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '35deg',
+            "latitude": '12deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "อาคาร 50 ปี คณะวิศวกรรมศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>อาคาร 50 ปี คณะวิศวกรรมศาสตร์ มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/วิศวะ.jpg' width='400' /><br>เป็นอาคาร 50 ปี วิศวะรวมใจ เดิมชื่อ “อาคารเรียนรวม 50 ปี คณะวิศวกรรมศาสตร์” สร้าง เพื่อเป็นอนุสรณ์ในโอกาสครบรอบ 50 ปี ของการสถาปนาคณะฯ ตัวอาคารเป็นโครงสร้างคอนกรีตสวยงาม",
+
+          },
         ],
-        //position: [-80.156479, 25.666725, 3],
-        //panoData: { poseHeading: 300 },
-        panoData: { poseHeading: 0 },
+        position: [-80.156479, 25.666725, 3],
+        panoData: { poseHeading: 300 },
       },
       {
         id: '2',
@@ -90,17 +124,70 @@
         thumbnail: 'aroundkkuset/วงเวียนสะพานขาว.jpg',
         name: 'วงเวียนสะพานขาว',
         links: [
-          //{ nodeId: '3' },
-          { nodeId: '1', "x": 2200, "y": 2000 },
+          { nodeId: '3' },
+          { nodeId: '1' },
         ],
         markers: [
+        {
+            "id": "marker-6",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '270deg',
+            "latitude": '10deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "คณะเทคโนโลยี มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>คณะเทคโนโลยี มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/เทคโน.jpg' width='400' /><br> เป็นส่วนราชการไทยระดับคณะวิชา สังกัดมหาวิทยาลัยขอนแก่น กระทรวงศึกษาธิการ เป็นคณะวิชาที่จัดตั้งขึ้นเป็นอันดับที่ 12 ของมหาวิทยาลัยขอนแก่น ",
 
+          },
+          {
+            "id": "marker-7",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '0deg',
+            "latitude": '10deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ภาควิชาวิศวกรรมเครื่องกล คณะวิศวกรรมศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ภาควิชาวิศวกรรมเครื่องกล คณะวิศวกรรมศาสตร์ มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/เครื่องกล.jpg' width='400' /><br> เป็นอาคารเรียนของภาควิชาวิศวกรรมเครื่องกล คณะวิศวกรรมศาสตร์ ",
 
+          },
+          {
+            "id": "marker-8",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '70deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ภารกิจสื่อสาร สำนักเทคโนโลยีดิจิทัล",
+            "content": "<h2>ภารกิจสื่อสาร สำนักเทคโนโลยีดิจิทัล</h2><br> เป็นสำนักงานภารกิจสื่อสารของสำนักเทคโนโลยีดิจิทัล มหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-9",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '55deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "โรงพิมพ์มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>โรงพิมพ์มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/โรงพิมพ์.jpg' width='400' /><br> โรงพิมพ์มหาวิทยาลัยขอนแก่นเริ่มแรกได้ก่อตั้งขึ้นมาตั้งแต่ปี พ.ศ. 2537 เพื่อให้บริการงานพิมพ์แก่หน่วยงานภายในมหาวิทยาลัยขอนแก่น โดยมีวิวัฒนาการมาจากศูนย์ผลิตเอกสารทางวิชาการ มีที่ทำการเริ่มต้นที่อาคารห้องสมุด ",
+
+          },
+          {
+            "id": "marker-10",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '165deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "สระพลาสติก มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>สระพลาสติก มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/สระพลาสติก.jpg' width='400' /><br> เป็นสวนสาธารณะของมหาวิทยาลัยขอนแก่น ",
+
+          },
+          
         ],
-        //position: [-80.156268, 25.666623, 3],
-        //panoData: { poseHeading: 0 },
-        panoData: { poseHeading: 0 },
-      },/*
+        position: [-80.156268, 25.666623, 3],
+        panoData: { poseHeading: 25 }
+      },
       {
         id: '3',
         panorama: 'aroundkkuset/วงเวียนหน้าตึกอธิการบดี.jpg',
@@ -110,8 +197,65 @@
           { nodeId: '4' },
           { nodeId: '2' },
         ],
-        //position: [-80.155932, 25.666498, 5],
-        //panoData: { poseHeading: 280 },
+        markers : [
+        {
+            "id": "marker-11",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '240deg',
+            "latitude": '10deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ตึกอธิการบดี มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ตึกอธิการบดี มหาวิทยาลัยขอนแก่น</h2> <img src='./aroundkkuset/desc/ตึกอธิการ.jpg' width='400' /> <br> ตึกอธิการบดีของมหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-12",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '220deg',
+            "latitude": '14deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "อาคารสิริคุณากร",
+            "content": "<h2>อาคารสิริคุณากร</h2> <img src='./aroundkkuset/desc/สิริ.jpg' width='400' /><br>  ",
+
+          },
+          {
+            "id": "marker-13",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '190deg',
+            "latitude": '3deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ลานจอดรถหน้าอาคารสิริคุณากร",
+            "content": "<h2>ลานจอดรถหน้าอาคารสิริคุณากร</h2><br>  ",
+
+          },
+          {
+            "id": "marker-14",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '282deg',
+            "latitude": '7deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "Bus Parking",
+            "content": "<h2>Bus Parking</h2><br> ที่รอรถบัส ",
+
+          },
+          {
+            "id": "marker-15",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '357deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "หอศิลป์คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>หอศิลป์คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น</h2> <img src='./aroundkkuset/desc/หอศิลป์.jpg' width='400' /> <br> ",
+
+          },
+        ],
+        position: [-80.155932, 25.666498, 5],
+        panoData: { poseHeading: 280 },
       },
       {
         id: '4',
@@ -122,9 +266,65 @@
           { nodeId: '3' },
           { nodeId: '5' },
         ],
-        //position: [-80.168089, 25.966357, 3],
-        //panoData: { poseHeading: 320 },
-        panoData: { poseHeading: 0 },
+        markers : [
+        {
+            "id": "marker-16",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '218deg',
+            "latitude": '20deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "คณะเทคนิคการแพทย์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>คณะเทคนิคการแพทย์ มหาวิทยาลัยขอนแก่น</h2> <img src='./aroundkkuset/desc/เทคนิค.jpg' width='400' /> <br> เป็นส่วนราชการไทยระดับคณะวิชา สังกัดมหาวิทยาลัยขอนแก่น กระทรวงศึกษาธิการ เป็นคณะวิชาที่จัดตั้งขึ้นเป็นอันดับที่ 8 ของมหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-17",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '46deg',
+            "latitude": '12deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ตึกภาควิชาเวชศาสตร์ฟื้นฟู โรงพยาบาลศรีนครินทร์ คณะแพทยศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ตึกภาควิชาเวชศาสตร์ฟื้นฟู โรงพยาบาลศรีนครินทร์ คณะแพทยศาสตร์ มหาวิทยาลัยขอนแก่น</h2><br> เป็นอาคารของโรงพยาบาลศรีนครินทร์ คณะแพทยศาสตร์ มหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-18",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '57deg',
+            "latitude": '7deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "คลินิคทันตกรรมพิเศษ",
+            "content": "<h2>คลินิคทันตกรรมพิเศษ</h2><br> เป็นคลินิคทันตกรรม คณะทันตแพทยศาสตร์ มหาวิทยาลัยขอนแก่น สนับสนุนการเรียนการสอน ที่กำหนดให้นักศึกษาทันตแพทย์ปริญญาตรีและหลังปริญญา ได้ฝึกปฏิบัติงานในคลินิก ",
+
+          },
+          {
+            "id": "marker-19",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '65deg',
+            "latitude": '9deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "โรงพยาบาลทันตกรรม คณะทันตแพทยศาสตร์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>โรงพยาบาลทันตกรรม คณะทันตแพทยศาสตร์ มหาวิทยาลัยขอนแก่น</h2><img src='./aroundkkuset/desc/โรงทันตะ.kpg.jpg' width='400' /><br> เป็นส่วนราชการไทยระดับคณะวิชา สังกัดมหาวิทยาลัยขอนแก่น กระทรวงศึกษาธิการ เป็นคณะวิชาที่จัดตั้งขึ้นเป็นอันดับที่ 10 ของมหาวิทยาลัยขอนแก่น ",
+
+          },
+          {
+            "id": "marker-20",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '340deg',
+            "latitude": '4deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ลานจอดรถ โรงพยาบาลศรีนครินทร์  มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ลานจอดรถ โรงพยาบาลศรีนครินทร์  มหาวิทยาลัยขอนแก่น</h2><br> เป็นลานจอดรถสาธารณะแถวโรงพยาบาลศรีนครินทร์  มหาวิทยาลัยขอนแก่น ",
+
+          },
+        ],
+        position: [-80.168089, 25.966357, 3],
+        panoData: { poseHeading: 320 },
       },
       {
         id: '5',
@@ -136,9 +336,65 @@
           { nodeId: '7' },
           { nodeId: '4' },
         ],
-        //position: [-80.196292, 25.956446, 2],
-        //panoData: { poseHeading: 150 },
-        panoData: { poseHeading: 0 },
+        markers : [
+        {
+            "id": "marker-21",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '143deg',
+            "latitude": '9deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ป้ายประชาสัมพันธ์ของคณะมนุษยศาสตร์และสังคมศาสตร์ ",
+            "content": "<h2>เป็นป้ายประชาสัมพันธ์ของคณะมนุษยศาสตร์และสังคมศาสตร์</h2><br>  ",
+
+          },
+          {
+            "id": "marker-22",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '344deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ประตูมหาวิทยาลัยขอนแก่น",
+            "content": "<h2>เป็นประตูเข้าสู่มหาวิทยาลัยขอนแก่น</h2> <img src='./aroundkkuset/desc/ประตู.jpg' width='400' /> <br>  ",
+
+          },
+          {
+            "id": "marker-23",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '155deg',
+            "latitude": '8deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ทางเข้าอาคาร HS.05 คณะมนุษยศาสตร์และสังคมศาสตร์ ",
+            "content": "<h2>เป็นทางเข้า อาคาร HS.05 คณะมนุษยศาสตร์และสังคมศาสตร์</h2> <img src='./aroundkkuset/desc/มนุษย์.jpg' width='400' /> <br>  ",
+
+          },
+          {
+            "id": "marker-24",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '100deg',
+            "latitude": '-30deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ดอกเฟื่องฟ้า ",
+            "content": "<h2>ดอกเฟื่องฟ้า</h2><br> เป็นไม้ยืนต้นประเภทพุ่มกึ่งเลื้อย ขนาดตั้งแต่พุ่มเล็กถึงพุ่มใหญ่ มีหนามขึ้นตามลำต้นอยู่ ใบเดี่ยว แตกออก สลับกับกิ่ง หรือเยื้องกัน มีขนขึ้นปกคลุมเล็กน้อย มีสีเขียวหรือใบด่าง  ",
+
+          },
+          {
+            "id": "marker-25",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '10deg',
+            "latitude": '15deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "โครงสร้างเหล็กสีแดง",
+            "content": "<h2>โครงสร้างเหล็กสีแดง</h2><br> เป็นโครงสร้างเหล็กสีแดงที่อยู่กลางวงเวียน",
+
+          },
+        ],
+        position: [-80.196292, 25.956446, 2],
+        panoData: { poseHeading: 150 },
       },
       {
         id: '6',
@@ -149,9 +405,65 @@
           { nodeId: '5' },
           { nodeId: '7' },
         ],
-        //position: [-80.276465, 25.666496, 2],
-        //panoData: { poseHeading: 50 },
-        panoData: { poseHeading: 0 },
+        markers : [
+        {
+            "id": "marker-26",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '180deg',
+            "latitude": '10deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "หอพักนักศึกษาที่ 13",
+            "content": "<h2>หอพักนักศึกษาที่ 13 </h2> <img src='./aroundkkuset/desc/หอ13.jpg' width='400' /> <br> เป็นหอพักสำหรับนักศึกษาหญิงของมหาวิทยาลัยขอนแก่น",
+
+          },
+          {
+            "id": "marker-27",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '100deg',
+            "latitude": '19deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ศูนย์อาหารและบริการ 1 (คอมเพล็กซ์)",
+            "content": "<h2>ศูนย์อาหารและบริการ 1 (คอมเพล็กซ์) </h2> <img src='./aroundkkuset/desc/complex.jpg' width='400' /> <br> ศูนย์อาหารและบริการต่างๆในมหาวิทยาลัยขอนแก่น",
+
+          },
+          {
+            "id": "marker-28",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '91deg',
+            "latitude": '4deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "ที่ทำการไปรษณีย์ มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>ที่ทำการไปรษณีย์ มหาวิทยาลัยขอนแก่น </h2> <img src='./aroundkkuset/desc/ไปร.jpg' width='400' /> <br> ที่ทำการไปรษณีย์",
+
+          },
+          {
+            "id": "marker-29",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '55deg',
+            "latitude": '15deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "สำนักหอสมุด มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>สำนักหอสมุด มหาวิทยาลัยขอนแก่น </h2><img src='./aroundkkuset/desc/สมุด.jpg' width='400' /> <br> เป็นหอสมุดที่รวบรวมแหล่งข้อมูล วิทยานิพนธ์ต่างๆเอาไว้",
+
+          },
+          {
+            "id": "marker-30",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '280deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "หอพักนักศึกษาที่ 1",
+            "content": "<h2>หอพักนักศึกษาที่ 1 </h2> <img src='./aroundkkuset/desc/หอ1.jpg' width='400' /> <br> เป็นหอพักสำหรับนักศึกษาหญิงของมหาวิทยาลัยขอนแก่น",
+
+          },
+        ],
+        position: [-80.276465, 25.666496, 2],
+        panoData: { poseHeading: 50 },
       },
       {
         id: '7',
@@ -162,10 +474,66 @@
           { nodeId: '6' },
           { nodeId: '5' },
         ],
-        //position: [-79.956465, 25.566496, 2],
-        //panoData: { poseHeading: 40 },
-        panoData: { poseHeading: 0 },
-      },*/
+        markers : [
+        {
+            "id": "marker-31",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '310deg',
+            "latitude": '12deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "หอพักนักศึกษาที่ 15",
+            "content": "<h2>หอพักนักศึกษาที่ 15 </h2><img src='./aroundkkuset/desc/หอ15.jpg' width='400' /><br> เป็นหอพักสำหรับนักศึกษาชายของมหาวิทยาลัยขอนแก่น",
+
+          },
+          {
+            "id": "marker-32",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '320deg',
+            "latitude": '12deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "หอพักนักศึกษาที่ 16",
+            "content": "<h2>หอพักนักศึกษาที่ 16 </h2><img src='./aroundkkuset/desc/หอ16.jpg' width='400' /><br> เป็นหอพักสำหรับนักศึกษาชายของมหาวิทยาลัยขอนแก่น",
+
+          },
+          {
+            "id": "marker-33",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '90deg',
+            "latitude": '5deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "สนามฟุตบอล มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>สนามฟุตบอล มหาวิทยาลัยขอนแก่น </h2><br> เป็นลานสนามหญ้ากว้างๆ",
+
+          },
+          {
+            "id": "marker-34",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '65deg',
+            "latitude": '7deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "สนามบาส มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>สนามบาส มหาวิทยาลัยขอนแก่น </h2><img src='./aroundkkuset/desc/บาส.jpg' width='400' /><br> เป็นสนามบาสแบบ outdoor ",
+
+          },
+          {
+            "id": "marker-35",
+            "image": "https://photo-sphere-viewer.js.org/assets/pin-red.png",
+            "longitude": '2deg',
+            "latitude": '10deg',
+            "width": 32,
+            "height": 32,
+            "tooltip": "สนามกีฬา 50 ปี มหาวิทยาลัยขอนแก่น",
+            "content": "<h2>สนามกีฬา 50 ปี มหาวิทยาลัยขอนแก่น </h2><img src='./aroundkkuset/desc/50ปี.jpg' width='400' /><br> เป็นสนามกีฬากลางเอาไว้ใช้แข่งขันกีฬาต่างๆ ของมหาวิทยาขอนแก่น ",
+
+          },
+        ],
+        position: [-79.956465, 25.566496, 2],
+        panoData: { poseHeading: 40 },
+      },
     ], '1');
 
   </script>
